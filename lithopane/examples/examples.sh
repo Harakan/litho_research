@@ -1,7 +1,7 @@
 #!/bin/bash
 
-../lithophane.js -i reference.png
-../lithophane.js -i reference-as-lithophane.png -o reference_as_litho.stl
+../lithophane.js -c 16 -i reference.png
+../lithophane.js -c 16 -i tux.png -o tux.stl
 
 #This kills it:
 #./lithophane.js -i ie1_ramjam.jpg -o ramo.stl

@@ -53,7 +53,7 @@ var getImageHeights = function(d) {
       // and add it to the array
       for (var j=0; j<result.height; j++) {
         var g = convertToGrayscale(d.get(0,i,j,0), d.get(0,i,j,1), d.get(0,i,j,2));
-        result.data[i][j] = normalizeValue(g, 256, 16);
+        result.data[i][j] = normalizeValue(g, 256, program.contrast);
       }
     }
 
@@ -69,7 +69,7 @@ var getImageHeights = function(d) {
       // and add it to the array
       for (var j=0; j<result.height; j++) {
         var g = convertToGrayscale(d.get(i,j,0), d.get(i,j,1), d.get(i,j,2));
-        result.data[i][j] = normalizeValue(g, 256, 16);
+        result.data[i][j] = normalizeValue(g, 256, program.contrast);
       }
     }
 
@@ -86,12 +86,12 @@ var getImageHeights = function(d) {
 
 var getModelAreas = function(d) {
 
-  // these values are based on settings in the 3D printer
+  // Here we get into the details for the 3d printer
 
-  var border = 1.0
-  var base = 0.4      // means the model will always have a 0.4mm base
-  var scale = 0.2     // each of the 10 layers will be 0.2 mm in height
-  var zenith = base + (scale*10);
+  var border = program.border
+  var base = program.base      // means the model will always have a 0.4mm base
+  var scale = program.height     // layer height default: 0.2 mm
+  var zenith = base + (scale*program.layers); //Top of the picture vs base in mm
   var maxWidth = scale*d.width;
   var maxHeight = scale*d.height;
   var areas = [];
@@ -435,8 +435,13 @@ var program = require('commander');
 program
   .version('0.0.1')
   .option('-i, --image [path]', 'Path to image file (required)')
-  .option('-o, --output-file [path]', 'STL output file (defaults to lithophane.stl)', String, 'lithophane.stl')
+  .option('-o, --output-file [path]', 'STL output file (Default: lithophane.stl)', String, 'lithophane.stl')
   .option('-a, --ascii', 'Export STL as ASCII instead of binary')
+  .option('-c, --contrast', 'Number: 4-256 inclusive (Default: 16)', 16)
+  .option('-b, --border', 'Border width around the image in mm? (Default: 1.0)', 1.0)
+  .option('-B, --base', 'Base height in mm? (Default: 0.4)', 0.4)
+  .option('-H, --height', 'layer height in mm? (Default: 0.2)', 0.2)
+  .option('-l, --layers', 'number of layers in the picture part (Default: 10)', 10)
   .parse(process.argv);
 
 // process the image if it exists
