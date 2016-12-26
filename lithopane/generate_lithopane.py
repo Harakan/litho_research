@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 Generating Lithopane from picture
@@ -165,5 +166,5 @@ print ("python generate_squarebox.py -W %(widthbox)f -H %(heightbox)f -D %(depth
 print ("")
 #call scad
 print ("Starting openscad stl generation. This can take a while!")
-returnid = subprocess.call(["/home/benny/git/openscad/openscad", '-o', 'lithopane.stl', 'lithopane.scad'])
+returnid = subprocess.call(["openscad", '-o', 'lithopane.stl', 'lithopane.scad'])
 print ("Generation finished. Stl in lithopane.stl" )
