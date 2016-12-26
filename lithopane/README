@@ -1,0 +1,14 @@
+Example calls:
+
+help:
+python generate_lithopane.py -h
+
+size of image
+python generate_lithopane.py -i
+
+small image of 3cm wide in print:
+python generate_lithopane.py Kaylee.JPG -w 30 -r 0.3 
+
+bigger of 5cm wide
+python generate_lithopane.py Leila.JPG -w 50 -r 0.5 
+
