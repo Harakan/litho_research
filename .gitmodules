@@ -1,0 +1,6 @@
+[submodule "example_gits/ontwerpen"]
+	path = example_gits/ontwerpen
+	url = https://github.com/ingegno/ontwerpen.git
+[submodule "example_gits/lithophane"]
+	path = example_gits/lithophane
+	url = https://github.com/wubbahed/lithophane.git
