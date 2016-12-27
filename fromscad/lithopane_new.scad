@@ -14,7 +14,8 @@ picture_orientation = "horizontal"; // [horizontal, vertical]
 pane_size = "large"; // [large, small]
 
 // Simple photos with many shades of light/dark areas work best. Don't forget to click the Invert Colors checkbox!
-image_file = "image-surface.dat"; // [image_surface:100x100]
+//image_file = "image-surface.dat"; // [image_surface:100x100]
+image_file = "thingiverse_ramjam.dat"; // [image_surface:100x100]
 
 /* [Adjustments] */
 
