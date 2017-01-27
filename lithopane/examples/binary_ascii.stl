@@ -1,0 +1,32 @@
+the format:
+UINT8[80] – Header
+UINT32 – Number of triangles
+
+foreach triangle
+REAL32[3] – Normal vector
+REAL32[3] – Vertex 1
+REAL32[3] – Vertex 2
+REAL32[3] – Vertex 3
+UINT16 – Attribute byte count
+end
+
+
+<binary_stl_start>
+string("this header has 80 bytes")
+binary(num_triangles)
+real32(normal[x][y][z])
+real32(Vertex[x][y][z])
+real32(Vertex[x][y][z])
+real32(Vertex[x][y][z])
+00
+real32(normal[x][y][z])
+real32(Vertex[x][y][z])
+real32(Vertex[x][y][z])
+real32(Vertex[x][y][z])
+00
+</binary_stl_start>
+
+overhead: 80B+4B = 84B
+Triangle: 4*3*4B+2B = 50B
+
+
